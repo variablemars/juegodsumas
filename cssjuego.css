@@ -1,0 +1,13 @@
+body
+{
+  text-align: center;
+   background-color: aqua;
+   border-bottom: 10px;
+  }
+button
+{
+    border-color: coral;
+    background-color: lightblue;
+    height: 100px;
+    width: 100px;
+}
