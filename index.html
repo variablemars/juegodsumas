@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+        <script>
+            let opciones = [];
+            let puntos=0;
+            let falladas=0;
+
+function numerosal() {
+    
+    num1 = Math.floor(Math.random() * 100) + 1;
+    num2 = Math.floor(Math.random() * 100) + 1;
+
+    suma = num1 + num2;
+
+    
+    document.getElementById("mostrar").innerHTML =
+        "El primer número es: " + num1 + 
+        "<br>El segundo número es: " + num2+
+        "<br>la suma de los dos numeros es: " ;
+
+    
+    opciones = [suma];
+
+    while (opciones.length < 3) {
+        let Incorrecto = Math.floor(Math.random() * 200) + 1;
+        if (!opciones.includes(Incorrecto)) opciones.push(Incorrecto);
+    }
+
+   
+    opciones.sort(() => Math.random() - 0.5);
+
+   
+    document.getElementById("b1").value = opciones[0];
+    document.getElementById("b2").value = opciones[1];
+    document.getElementById("b3").value = opciones[2];
+    document.getElementById("puntos").value;
+}
+
+
+function respuesta(valor) {
+    if (parseInt(valor) === suma) {
+        Swal.fire({
+            title: "La respuesta es CORRECTA!",
+            icon: "success",
+            draggable: true
+        });
+        puntos++;
+    } else {
+        Swal.fire({
+            title: "La respuesta es INCORRECTA!",
+            icon: "error",
+            draggable: true
+        });
+        falladas++;
+
+    }
+
+ document.getElementById("falladas").innerText = "falladas: " + falladas;
+    document.getElementById("puntaje").innerText = "Puntaje: " + puntos;
+
+
+    numerosal();
+}
+
+    
+
+
+
+        </script>
+    </head>
+    <body>
+        <link rel="stylesheet" href="cssjuego.css">
+        <form>
+
+            <button type="button" onclick="numerosal()">Generar números</button>
+            
+            <p id="mostrar" style="padding: 15px; font-family: 'Times New Roman', Times, serif;"></p>
+            <p id="puntaje"></p>
+            <p id="falladas"></p>
+             
+            <input type="button" id="b1" value="?" onclick="respuesta(this.value)" style="padding: 10px ;"  >
+            <input type="button" id="b2" value="?" onclick="respuesta(this.value)"style="padding: 10px ;">
+            <input type="button" id="b3" value="?" onclick="respuesta(this.value)"style="padding: 10px ;">
+        
+        </form>
+        
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
